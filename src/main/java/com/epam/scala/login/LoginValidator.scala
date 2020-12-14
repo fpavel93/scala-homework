@@ -23,4 +23,17 @@ object LoginValidator {
     }
   }
 
+  def validatePatternMatching(login: NewLogin): String = {
+
+    val result: String = login match {
+      case NewLogin("admin", _, _) => "user can't be admin "
+      case NewLogin(_, pass, _) if pass.contains("z") => s"pass can't contain z and it: $pass"
+      case NewLogin(user, pass, _) if user == pass => s"user and pass are the same: $user"
+      case NewLogin(_, pass, _) if pass.forall(_.isDigit) => "pass con't be only digits"
+      case NewLogin(_, pass, conf) if pass != conf => s"pass $pass is not equals to confitrmation: $conf"
+      case _ => s"login is ok"
+    }
+    result
+  }
+
 }
