@@ -2,12 +2,12 @@ package com.epam.scala.utils
 
 class StringExtension(val string: String) {
 
-  def isBlank(): Boolean = {
+  def isBlank: Boolean = {
     string.size == 0
   }
 
-  def isEmail(): Boolean = {
-    string.contains("@")
+  def isEmail: Boolean = {
+    string.contains("@")&&string.contains(".")
   }
 }
 
